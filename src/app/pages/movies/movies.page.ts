@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MovieService} from "../../services/movie.service";
 import {LoadingController} from "@ionic/angular";
 import {PopularMoviesRemote} from "../../PopularMoviesRemote";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-movies',
@@ -12,6 +13,7 @@ export class MoviesPage implements OnInit {
 
   movies: PopularMoviesRemote[] = [];
   currentPage = 1;
+  imageBaseUrl = environment.images;
 
   constructor(private movieService: MovieService, private loadingController: LoadingController) {
   }
