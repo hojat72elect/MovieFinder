@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {environment} from "../../environments/environment";
+import {ApiResult} from "../PopularMoviesRemote";
 
 /**
- * In the context of Angular, Service is something we inject into another class as a
- * dependency. Here it works pretty much like a repository to data layer of the app.
- * This repository is for movies.
+ * This is our remote DataSource (in Ionic it's called service) which provides information from web server.
  */
 @Injectable({
   providedIn: 'root'
@@ -15,10 +15,11 @@ export class MovieService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getTopRatedMovies(): Observable<any> {
-    return this.httpClient.get('');
+  getTopRatedMovies(page = 1): Observable<ApiResult> {
+    return this.httpClient.get<ApiResult>(`${environment.baseUrl}/movie/popular?api_key=${environment.apiKey}&page=${page}`);
   }
 
-  getMovieDetails() {
+  getMovieDetails(id: string) {
+    return this.httpClient.get<any>(`${environment.baseUrl}/movie/${id}?api_key=${environment.apiKey}`);
   }
 }
