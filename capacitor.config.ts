@@ -1,9 +1,9 @@
-import { CapacitorConfig } from '@capacitor/cli';
+import {CapacitorConfig} from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'ca.on.sudbury.hojat.moviefinder',
   appName: 'MovieFinder',
-  webDir: 'www',
+  webDir: 'https://github.com/hojat72elect/MovieFinder',
   server: {
     androidScheme: 'https'
   }
