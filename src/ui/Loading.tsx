@@ -1,6 +1,6 @@
 import {Dimensions, View} from "react-native";
 import * as Progress from 'react-native-progress';
-import {theme} from "../MovieAppTheme";
+import {AppTheme} from "../AppTheme";
 
 const {width, height} = Dimensions.get('window');
 
@@ -15,7 +15,7 @@ export const Loading = () => {
                 justifyContent:'center',
             }}
         >
-            <Progress.CircleSnail thickness={12} size={160} color={theme.background}/>
+            <Progress.CircleSnail thickness={12} size={160} color={AppTheme.secondary}/>
         </View>
     )
 }

@@ -9,7 +9,7 @@ import {Cast} from "../ui/Cast";
 import {styles} from "../ui/Theme";
 import {fallbackMoviePoster, fetchMovieCredits, fetchMovieDetails, fetchSimilarMovies, image500} from "../api/MovieDb";
 import {Loading} from "../ui/Loading";
-import {theme} from "../MovieAppTheme";
+import {AppTheme} from "../AppTheme";
 import {
     ApiMovieCredits,
     ApiMovieCreditsCast,
@@ -89,7 +89,7 @@ export const MovieScreen = () => {
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={() => toggleFavourite(!isFavourite)}>
-                        <HeartIcon size={35} color={isFavourite ? theme.background : 'white'}/>
+                        <HeartIcon size={35} color={isFavourite ? AppTheme.secondary : 'white'}/>
                     </TouchableOpacity>
                 </SafeAreaView>
                 {
