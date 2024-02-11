@@ -4,19 +4,25 @@ import {useNavigation, useRoute} from "@react-navigation/native";
 import {ChevronLeftIcon} from "react-native-heroicons/outline";
 import {LinearGradient} from "expo-linear-gradient";
 import {HeartIcon} from "react-native-heroicons/solid";
-import {MovieList} from "../ui/MovieList";
-import {Cast} from "../ui/Cast";
-import {styles} from "../ui/Theme";
-import {fallbackMoviePoster, fetchMovieCredits, fetchMovieDetails, fetchSimilarMovies, image500} from "../api/MovieDb";
-import {Loading} from "../ui/Loading";
-import {AppTheme} from "../AppTheme";
+import {MovieList} from "../MovieList";
+import {Cast} from "../Cast";
+import {styles} from "../Theme";
+import {
+    fallbackMoviePoster,
+    fetchMovieCredits,
+    fetchMovieDetails,
+    fetchSimilarMovies,
+    image500
+} from "../../api/MoviesRepository";
+import {Loading} from "../Loading";
+import {AppTheme} from "../../AppTheme";
 import {
     ApiMovieCredits,
     ApiMovieCreditsCast,
     ApiMovieDetails,
     ApiResponse,
     ApiResponseResults
-} from "../api/response/ApiResponse";
+} from "../../api/response/ApiResponse";
 import {NavigationProp} from "@react-navigation/core/src/types";
 
 const {width, height} = Dimensions.get('window');

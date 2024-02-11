@@ -1,6 +1,6 @@
 import {Text, View} from "react-native";
-import {AppTheme} from "../AppTheme";
-import {SettingsSectionItem} from "../ui/SettingsSectionItem";
+import {AppTheme} from "../../AppTheme";
+import {SettingsSectionItem} from "../SettingsSectionItem";
 
 export const SettingsScreen = () => {
 

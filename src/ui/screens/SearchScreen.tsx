@@ -10,11 +10,11 @@ import {
 } from "react-native";
 import {useNavigation} from "@react-navigation/native";
 import {useCallback, useState} from "react";
-import {fallbackMoviePoster, image185, searchMovies} from "../api/MovieDb";
+import {fallbackMoviePoster, image185, searchMovies} from "../../api/MoviesRepository";
 import {debounce} from 'lodash';
 import {XMarkIcon} from "react-native-heroicons/mini";
-import {Loading} from "../ui/Loading";
-import {ApiResponse, ApiResponseResults} from "../api/response/ApiResponse";
+import {Loading} from "../Loading";
+import {ApiResponse, ApiResponseResults} from "../../api/response/ApiResponse";
 
 const {width, height} = Dimensions.get('window');
 
@@ -154,7 +154,7 @@ export default function SearchScreen() {
                     ) : (
 
                         <Image
-                            source={require('../../assets/images/movieTime.png')}
+                            source={require('../../../assets/images/movieTime.png')}
                             style={{
                                 height: 400,
                                 width: 400,

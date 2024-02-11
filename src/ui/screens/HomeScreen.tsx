@@ -2,13 +2,14 @@ import React, {useEffect, useState} from 'react'
 import {Platform, SafeAreaView, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {StatusBar} from "expo-status-bar";
 import {Bars3CenterLeftIcon, MagnifyingGlassIcon} from "react-native-heroicons/outline";
-import {TrendingMovies} from "../ui/TrendingMovies";
-import {MovieList} from "../ui/MovieList";
-import {styles} from "../ui/Theme";
+import {TrendingMovies} from "../TrendingMovies";
+import {MovieList} from "../MovieList";
+import {styles} from "../Theme";
 import {useNavigation} from "@react-navigation/native";
-import {fetchTopRatedMovies, fetchTrendingMovies, fetchUpcomingMovies} from "../api/MovieDb";
-import {Loading} from "../ui/Loading";
-import {ApiResponse, ApiResponseResults} from "../api/response/ApiResponse";
+import {fetchTopRatedMovies, fetchTrendingMovies, fetchUpcomingMovies} from "../../api/MoviesRepository";
+import {Loading} from "../Loading";
+import {ApiResponseResults} from "../../api/entities/ApiResponseResults";
+import {ApiResponse} from "../../api/entities/ApiResponse";
 
 const isIos = Platform.OS === 'ios';
 
@@ -79,8 +80,8 @@ export const HomeScreen = () => {
                     {/*Trending movies carousel.*/}
                     {trending.length > 0 && <TrendingMovies data={trending}/>}
 
-                    {/*A row of upcoming movies.*/}
-                    {upcoming.length > 0 && <MovieList title="Upcoming" data={upcoming}/>}
+                    {/*A row of recently released movies.*/}
+                    {upcoming.length > 0 && <MovieList title="Recently Released" data={upcoming}/>}
 
                     {/*A row of top-rated movies.*/}
                     {topRated.length > 0 && <MovieList title="Top Rated" data={topRated}/>}

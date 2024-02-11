@@ -1,4 +1,4 @@
-import {TMDB_API_KEY as apiKey} from "./Secrets" ;
+import {TMDB_API_KEY as apiKey} from "./Secrets";
 import axios from "axios";
 
 // endpoints

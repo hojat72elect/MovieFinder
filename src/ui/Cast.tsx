@@ -1,6 +1,6 @@
 import React from 'react'
 import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
-import {fallbackPersonImage, image185} from "../api/MovieDb";
+import {fallbackPersonImage, image185} from "../api/MoviesRepository";
 import {ApiMovieCreditsCast} from "../api/response/ApiResponse";
 import {NavigationProp} from "@react-navigation/core/src/types";
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Dimensions, Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {useNavigation} from "@react-navigation/native";
-import {fallbackMoviePoster, image185} from "../api/MovieDb";
+import {fallbackMoviePoster, image185} from "../api/MoviesRepository";
 import {ApiResponseResults} from "../api/response/ApiResponse";
 import {styles} from "./Theme";
 

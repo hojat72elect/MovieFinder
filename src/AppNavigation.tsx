@@ -1,10 +1,10 @@
 import React, {ReactNode} from 'react'
 import {NavigationContainer, Route} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import {HomeScreen} from "./screens/HomeScreen";
-import {MovieScreen} from "./screens/MovieScreen";
-import {PersonScreen} from "./screens/PersonScreen";
-import SearchScreen from "./screens/SearchScreen";
+import {HomeScreen} from "./ui/screens/HomeScreen";
+import {MovieScreen} from "./ui/screens/MovieScreen";
+import {PersonScreen} from "./ui/screens/PersonScreen";
+import SearchScreen from "./ui/screens/SearchScreen";
 import {Destination} from "./Destination";
 import {AppTheme} from "./AppTheme";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
@@ -19,8 +19,8 @@ import {
     HomeIcon as HomeSolid
 } from 'react-native-heroicons/solid';
 import {Text, View} from "react-native";
-import {LikesScreen} from "./screens/LikesScreen";
-import {SettingsScreen} from "./screens/SettingsScreen";
+import {LikesScreen} from "./ui/screens/LikesScreen";
+import {SettingsScreen} from "./ui/screens/SettingsScreen";
 
 
 // The 2 navigators used for the navigation module of this app.

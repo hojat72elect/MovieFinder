@@ -2,12 +2,12 @@ import React, {useEffect, useState} from 'react'
 import {Dimensions, Image, Platform, SafeAreaView, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {ChevronLeftIcon} from "react-native-heroicons/outline";
 import {HeartIcon} from "react-native-heroicons/solid";
-import {styles} from "../ui/Theme";
-import {MovieList} from "../ui/MovieList";
+import {styles} from "../Theme";
+import {MovieList} from "../MovieList";
 import {useNavigation, useRoute} from "@react-navigation/native";
-import {fallbackPersonImage, fetchPersonDetails, fetchPersonMovies, image342} from "../api/MovieDb";
-import {Loading} from "../ui/Loading";
-import {ApiPersonDetails, ApiPersonMovies, ApiResponseResults} from "../api/response/ApiResponse";
+import {fallbackPersonImage, fetchPersonDetails, fetchPersonMovies, image342} from "../../api/MoviesRepository";
+import {Loading} from "../Loading";
+import {ApiPersonDetails, ApiPersonMovies, ApiResponseResults} from "../../api/response/ApiResponse";
 
 const ios = Platform.OS === 'ios';
 const verticalMargin: number = ios ? 0 : 34;
@@ -224,7 +224,7 @@ export function PersonScreen() {
                             style={{
                                 color: 'rgb(163 163 163)',
                                 letterSpacing: 1,
-                                marginTop:10
+                                marginTop: 10
                             }}
                         >
                             {
