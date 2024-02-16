@@ -5,9 +5,12 @@ import {HeartIcon} from "react-native-heroicons/solid";
 import {styles} from "../Theme";
 import {MovieList} from "../MovieList";
 import {useNavigation, useRoute} from "@react-navigation/native";
-import {fallbackPersonImage, fetchPersonDetails, fetchPersonMovies, image342} from "../../api/MoviesRepository";
 import {Loading} from "../Loading";
-import {ApiPersonDetails, ApiPersonMovies, ApiResponseResults} from "../../api/response/ApiResponse";
+import {fetchPersonMovies} from "../../api/repository/PersonMoviesDataSource";
+import {fetchPersonDetails} from "../../api/repository/PersonDetailsDataSource";
+import {FALLBACK_PERSON_IMAGE} from "../../api/Constants";
+import {getImage342} from "../../api/repository/TmdbImagesDataSource";
+
 
 const ios = Platform.OS === 'ios';
 const verticalMargin: number = ios ? 0 : 34;
@@ -18,8 +21,8 @@ export function PersonScreen() {
     const navigation = useNavigation();
 
     const [isFavourite, toggleFavourite] = useState(false);
-    const [person, setPerson] = useState<ApiPersonDetails | null>(null);
-    const [personMovies, setPersonMovies] = useState<ApiResponseResults[]>([]);
+    const [person, setPerson] = useState<any | null>(null);
+    const [personMovies, setPersonMovies] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -32,14 +35,14 @@ export function PersonScreen() {
     }, [item]);
 
     const getPersonDetails = async (id: number) => {
-        const data: ApiPersonDetails = await fetchPersonDetails(id);
+        const data = await fetchPersonDetails(id);
         setLoading(false);
         if (data) {
             setPerson(data);
         }
     }
     const getPersonMovies = async (id: number) => {
-        const data: ApiPersonMovies = await fetchPersonMovies(id);
+        const data = await fetchPersonMovies(id);
         if (data && data.cast) {
             setPersonMovies(data.cast);
         }
@@ -81,7 +84,7 @@ export function PersonScreen() {
                     >
                         {/*Person's profile picture*/}
                         <Image
-                            source={{uri: image342(person?.profile_path ?? null) || fallbackPersonImage}}
+                            source={{uri: getImage342(person?.profile_path ?? null) || FALLBACK_PERSON_IMAGE}}
                             style={{
                                 width: width * 0.74,
                                 height: height * 0.43,

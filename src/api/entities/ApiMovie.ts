@@ -1,4 +1,7 @@
-export type ApiResponseResults = {
+/**
+ * The movie that we get from server.
+ */
+export type ApiMovie = {
     adult: boolean;
     backdrop_path: string;
     genre_ids: string[];

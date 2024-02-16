@@ -1,15 +1,15 @@
 import React from 'react'
 import {Dimensions, Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {useNavigation} from "@react-navigation/native";
-import {fallbackMoviePoster, image185} from "../api/MoviesRepository";
-import {ApiResponseResults} from "../api/response/ApiResponse";
 import {styles} from "./Theme";
+import {FALLBACK_MOVIE_POSTER} from "../api/Constants";
+import {getImage185} from "../api/repository/TmdbImagesDataSource";
 
 const {width, height} = Dimensions.get('window');
 
 type MovieListProps = {
     title: string;
-    data: ApiResponseResults[];
+    data: any[];
     hideSeeAll?: boolean;
 };
 
@@ -55,7 +55,7 @@ export const MovieList = ({title, data, hideSeeAll = false}: MovieListProps) => 
                                 {/*Each card inside the horizontal scroll view.*/}
                                 <View style={{marginRight: 18, flexDirection: 'column', alignItems: 'center'}}>
                                     <Image
-                                        source={{uri: image185(item.poster_path) || fallbackMoviePoster}}
+                                        source={{uri: getImage185(item.poster_path) || FALLBACK_MOVIE_POSTER}}
                                         style={{
                                             width: width * 0.33,
                                             height: height * 0.22,

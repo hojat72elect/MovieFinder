@@ -1,12 +1,12 @@
 import React from 'react'
 import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
-import {fallbackPersonImage, image185} from "../api/MoviesRepository";
-import {ApiMovieCreditsCast} from "../api/response/ApiResponse";
 import {NavigationProp} from "@react-navigation/core/src/types";
+import {FALLBACK_PERSON_IMAGE} from "../api/Constants";
+import {getImage185} from "../api/repository/TmdbImagesDataSource";
 
 
 type CastProps = {
-    cast: ApiMovieCreditsCast[];
+    cast: any[];
     navigation: NavigationProp<ReactNavigation.RootParamList>;
 };
 
@@ -45,7 +45,7 @@ export const Cast = ({cast, navigation}: CastProps) => {
                                         borderWidth: 2,
                                         borderColor: 'rgb(115 115 115)',
                                     }}
-                                    source={{uri: image185(person?.profile_path) || fallbackPersonImage}}
+                                    source={{uri: getImage185(person?.profile_path) || FALLBACK_PERSON_IMAGE}}
                                 />
 
                                 <Text

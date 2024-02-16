@@ -7,23 +7,14 @@ import {HeartIcon} from "react-native-heroicons/solid";
 import {MovieList} from "../MovieList";
 import {Cast} from "../Cast";
 import {styles} from "../Theme";
-import {
-    fallbackMoviePoster,
-    fetchMovieCredits,
-    fetchMovieDetails,
-    fetchSimilarMovies,
-    image500
-} from "../../api/MoviesRepository";
 import {Loading} from "../Loading";
 import {AppTheme} from "../../AppTheme";
-import {
-    ApiMovieCredits,
-    ApiMovieCreditsCast,
-    ApiMovieDetails,
-    ApiResponse,
-    ApiResponseResults
-} from "../../api/response/ApiResponse";
 import {NavigationProp} from "@react-navigation/core/src/types";
+import {fetchSimilarMovies} from "../../api/repository/SimilarMoviesDataSource";
+import {fetchMovieCredits} from "../../api/repository/MovieCreditsDataSource";
+import {FALLBACK_MOVIE_POSTER} from "../../api/Constants";
+import {fetchMovieDetails} from "../../api/repository/MovieDetailsDataSource";
+import {getImage500} from "../../api/repository/TmdbImagesDataSource";
 
 const {width, height} = Dimensions.get('window');
 const isIos = Platform.OS === 'ios';
@@ -34,9 +25,9 @@ export const MovieScreen = () => {
     const {params: item} = useRoute();
     const navigation: NavigationProp<ReactNavigation.RootParamList> = useNavigation();
 
-    const [movie, setMovie] = useState<ApiMovieDetails | null>(null);
-    const [cast, setCast] = useState<ApiMovieCreditsCast[]>([]);
-    const [similarMovies, setSimilarMovies] = useState<ApiResponseResults[]>([]);
+    const [movie, setMovie] = useState<any | null>(null);
+    const [cast, setCast] = useState<any[]>([]);
+    const [similarMovies, setSimilarMovies] = useState<any[]>([]);
     const [isFavourite, toggleFavourite] = useState(false);
     const [loading, setLoading] = useState(false);
 
@@ -50,20 +41,20 @@ export const MovieScreen = () => {
     }, [item]);
 
     const getMovieDetails = async (id: number) => {
-        const data: ApiMovieDetails = await fetchMovieDetails(id);
+        const data = await fetchMovieDetails(id);
         setLoading(false);
         if (data) {
             setMovie(data);
         }
     }
     const getMovieCredits = async (id: number) => {
-        const data: ApiMovieCredits = await fetchMovieCredits(id);
+        const data = await fetchMovieCredits(id);
         if (data && data.cast) {
             setCast(data.cast);
         }
     }
     const getSimilarMovies = async (id: number) => {
-        const data: ApiResponse = await fetchSimilarMovies(id);
+        const data = await fetchSimilarMovies(id);
         if (data && data.results) {
             setSimilarMovies(data.results);
         }
@@ -105,7 +96,7 @@ export const MovieScreen = () => {
                         <View>
                             {/*The poster of the movie*/}
                             <Image
-                                source={{uri: image500(movie?.poster_path ?? null) || fallbackMoviePoster}}
+                                source={{uri: getImage500(movie?.poster_path ?? null) || FALLBACK_MOVIE_POSTER}}
                                 style={{width, height: height * 0.55}}
                             />
                             <LinearGradient

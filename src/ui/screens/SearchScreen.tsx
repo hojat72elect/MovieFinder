@@ -10,11 +10,12 @@ import {
 } from "react-native";
 import {useNavigation} from "@react-navigation/native";
 import {useCallback, useState} from "react";
-import {fallbackMoviePoster, image185, searchMovies} from "../../api/MoviesRepository";
 import {debounce} from 'lodash';
 import {XMarkIcon} from "react-native-heroicons/mini";
 import {Loading} from "../Loading";
-import {ApiResponse, ApiResponseResults} from "../../api/response/ApiResponse";
+import {searchMovies} from "../../api/repository/MovieSearchDataSource";
+import {FALLBACK_MOVIE_POSTER} from "../../api/Constants";
+import {getImage185} from "../../api/repository/TmdbImagesDataSource";
 
 const {width, height} = Dimensions.get('window');
 
@@ -22,7 +23,7 @@ export default function SearchScreen() {
     const navigation = useNavigation();
 
     const [loading, setLoading] = useState(false);
-    const [results, setResults] = useState<ApiResponseResults[]>([])
+    const [results, setResults] = useState<any[]>([])
 
     const handleSearch = (search: string) => {
         if (search && search.length > 2) {
@@ -32,7 +33,7 @@ export default function SearchScreen() {
                 include_adult: false,
                 language: 'en-US',
                 page: '1'
-            }).then((data: ApiResponse) => {
+            }).then((data) => {
                 setLoading(false);
                 if (data && data.results) setResults(data.results);
             })
@@ -125,7 +126,7 @@ export default function SearchScreen() {
                                                     style={{marginTop: 10}}
                                                 >
                                                     <Image
-                                                        source={{uri: image185(item.poster_path) || fallbackMoviePoster}}
+                                                        source={{uri: getImage185(item.poster_path) || FALLBACK_MOVIE_POSTER}}
                                                         style={{
                                                             width: width * 0.44,
                                                             height: height * 0.3,

@@ -1,8 +1,8 @@
-import {ApiResponseResults} from "./ApiResponseResults";
+import {ApiMovie} from "./ApiMovie";
 
 export type ApiResponse = {
     page: number;
-    results: ApiResponseResults[];
+    results: ApiMovie[];
     total_pages: number;
     total_results: number;
 };

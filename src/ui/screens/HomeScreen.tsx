@@ -6,24 +6,27 @@ import {TrendingMovies} from "../TrendingMovies";
 import {MovieList} from "../MovieList";
 import {styles} from "../Theme";
 import {useNavigation} from "@react-navigation/native";
-import {fetchTopRatedMovies, fetchTrendingMovies, fetchUpcomingMovies} from "../../api/MoviesRepository";
 import {Loading} from "../Loading";
-import {ApiResponseResults} from "../../api/entities/ApiResponseResults";
+import {ApiMovie} from "../../api/entities/ApiMovie";
 import {ApiResponse} from "../../api/entities/ApiResponse";
+import {fetchTrendingMovies} from "../../api/repository/TrendingMoviesDataSource";
+import {fetchRecentlyReleasedMovies} from "../../api/repository/RecentlyReleasedMoviesDataSource";
+import {fetchTopRatedMovies} from "../../api/repository/TopRatedMoviesDataSource";
 
 const isIos = Platform.OS === 'ios';
 
 export const HomeScreen = () => {
 
-    const [trending, setTrending] = useState<ApiResponseResults[]>([]);
-    const [upcoming, setUpcoming] = useState<ApiResponseResults[]>([]);
-    const [topRated, setTopRated] = useState<ApiResponseResults[]>([]);
+    const [trending, setTrending] = useState<ApiMovie[]>([]);
+    const [recentlyReleased, setRecentlyReleased] = useState<ApiMovie[]>([]);
+    const [topRated, setTopRated] = useState<ApiMovie[]>([]);
     const [loading, setLoading] = useState(true);
+
     const navigation = useNavigation();
 
     useEffect(() => {
         getTrendingMovies();
-        getUpcomingMovies();
+        getRecentlyReleasedMovies();
         getTopRatedMovies();
     }, []);
 
@@ -33,10 +36,10 @@ export const HomeScreen = () => {
         if (data && data.results) setTrending(data.results);
         setLoading(false)
     }
-    const getUpcomingMovies = async () => {
-        const data: ApiResponse = await fetchUpcomingMovies();
-        console.log('got upcoming', data.results.length)
-        if (data && data.results) setUpcoming(data.results);
+    const getRecentlyReleasedMovies = async () => {
+        const data: ApiResponse = await fetchRecentlyReleasedMovies();
+        console.log('got recentlyReleased', data.results.length)
+        if (data && data.results) setRecentlyReleased(data.results);
     }
     const getTopRatedMovies = async () => {
         const data: ApiResponse = await fetchTopRatedMovies();
@@ -81,7 +84,7 @@ export const HomeScreen = () => {
                     {trending.length > 0 && <TrendingMovies data={trending}/>}
 
                     {/*A row of recently released movies.*/}
-                    {upcoming.length > 0 && <MovieList title="Recently Released" data={upcoming}/>}
+                    {recentlyReleased.length > 0 && <MovieList title="Recently Released" data={recentlyReleased}/>}
 
                     {/*A row of top-rated movies.*/}
                     {topRated.length > 0 && <MovieList title="Top Rated" data={topRated}/>}
