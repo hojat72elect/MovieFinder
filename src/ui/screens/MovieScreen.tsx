@@ -33,7 +33,7 @@ export const MovieScreen = () => {
 
     useEffect(() => {
         // @ts-ignore
-        const movieId = item.id
+        const movieId: number = item.id
         setLoading(true);
         getMovieDetails(movieId);
         getMovieCredits(movieId);

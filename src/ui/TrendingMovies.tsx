@@ -3,12 +3,13 @@ import {Dimensions, Image, Text, TouchableWithoutFeedback, View} from "react-nat
 import Carousel from "react-native-snap-carousel";
 import {useNavigation} from "@react-navigation/native";
 import {getImage500} from "../api/repository/TmdbImagesDataSource";
+import {ApiMovie} from "../api/entities/ApiMovie";
 
 
 const {width, height} = Dimensions.get('window');
 
 type TrendingMoviesProps = {
-    data: any[];
+    data: ApiMovie[];
 };
 
 type MovieCardProps = {
@@ -37,7 +38,7 @@ export const TrendingMovies = ({data}: TrendingMoviesProps) => {
 
     const navigation = useNavigation();
 
-    const handleClick = (item: any) => {
+    const handleClick = (item: ApiMovie) => {
         // @ts-ignore
         navigation.navigate('Movie', item);
     };

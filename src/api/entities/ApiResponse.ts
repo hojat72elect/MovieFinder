@@ -1,5 +1,9 @@
 import {ApiMovie} from "./ApiMovie";
 
+/**
+ * This is the response we get from server when we are in the "Discover" screen and
+ * make an API call to TMDB server.
+ */
 export type ApiResponse = {
     page: number;
     results: ApiMovie[];

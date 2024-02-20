@@ -4,12 +4,13 @@ import {useNavigation} from "@react-navigation/native";
 import {styles} from "./Theme";
 import {FALLBACK_MOVIE_POSTER} from "../api/Constants";
 import {getImage185} from "../api/repository/TmdbImagesDataSource";
+import {ApiMovie} from "../api/entities/ApiMovie";
 
 const {width, height} = Dimensions.get('window');
 
 type MovieListProps = {
     title: string;
-    data: any[];
+    data: ApiMovie[];
     hideSeeAll?: boolean;
 };
 
