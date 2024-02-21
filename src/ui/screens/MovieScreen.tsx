@@ -15,6 +15,7 @@ import {fetchMovieCredits} from "../../api/repository/MovieCreditsDataSource";
 import {FALLBACK_MOVIE_POSTER} from "../../api/Constants";
 import {fetchMovieDetails} from "../../api/repository/MovieDetailsDataSource";
 import {getImage500} from "../../api/repository/TmdbImagesDataSource";
+import {ApiMovieDetails} from "../../api/entities/ApiMovieDetails";
 
 const {width, height} = Dimensions.get('window');
 const isIos = Platform.OS === 'ios';
@@ -25,7 +26,7 @@ export const MovieScreen = () => {
     const {params: item} = useRoute();
     const navigation: NavigationProp<ReactNavigation.RootParamList> = useNavigation();
 
-    const [movie, setMovie] = useState<any | null>(null);
+    const [movieDetails, setMovieDetails] = useState<ApiMovieDetails | null>(null);
     const [cast, setCast] = useState<any[]>([]);
     const [similarMovies, setSimilarMovies] = useState<any[]>([]);
     const [isFavourite, toggleFavourite] = useState(false);
@@ -41,10 +42,10 @@ export const MovieScreen = () => {
     }, [item]);
 
     const getMovieDetails = async (id: number) => {
-        const data = await fetchMovieDetails(id);
+        const data: ApiMovieDetails = await fetchMovieDetails(id);
         setLoading(false);
         if (data) {
-            setMovie(data);
+            setMovieDetails(data);
         }
     }
     const getMovieCredits = async (id: number) => {
@@ -96,7 +97,7 @@ export const MovieScreen = () => {
                         <View>
                             {/*The poster of the movie*/}
                             <Image
-                                source={{uri: getImage500(movie?.poster_path ?? null) || FALLBACK_MOVIE_POSTER}}
+                                source={{uri: getImage500(movieDetails?.poster_path ?? null) || FALLBACK_MOVIE_POSTER}}
                                 style={{width, height: height * 0.55}}
                             />
                             <LinearGradient
@@ -118,13 +119,13 @@ export const MovieScreen = () => {
                 {/* title */}
                 <Text style={{color: 'white', textAlign: 'center', fontSize: 28, fontWeight: 'bold', letterSpacing: 1}}>
                     {
-                        movie?.title
+                        movieDetails?.title
                     }
                 </Text>
 
                 {/* status, release year, runtime */}
                 {
-                    movie?.id ? (
+                    movieDetails?.id ? (
                         <Text style={{
                             color: 'rgb(163 163 163)',
                             fontWeight: "600",
@@ -133,7 +134,7 @@ export const MovieScreen = () => {
                             textAlign: 'center',
                             paddingTop: 6,
                         }}>
-                            {movie?.status} • {movie?.release_date?.split('-')[0] || 'N/A'} • {movie?.runtime} min
+                            {movieDetails?.status} • {movieDetails?.release_date?.split('-')[0] || 'N/A'} • {movieDetails?.runtime} min
                         </Text>
                     ) : null
                 }
@@ -142,8 +143,8 @@ export const MovieScreen = () => {
                 {/* genres  */}
                 <View style={{flexDirection: 'row', justifyContent: 'center', marginHorizontal: 8, paddingTop: 6,}}>
                     {
-                        movie?.genres?.map((genre, index) => {
-                            let showDot = index + 1 !== movie.genres.length;
+                        movieDetails?.genres?.map((genre, index) => {
+                            let showDot = index + 1 !== movieDetails.genres.length;
                             return (
                                 <Text key={index} style={{
                                     color: 'rgb(163 163 163)',
@@ -169,7 +170,7 @@ export const MovieScreen = () => {
                     paddingTop: 10,
                 }}>
                     {
-                        movie?.overview
+                        movieDetails?.overview
                     }
                 </Text>
 
@@ -178,12 +179,12 @@ export const MovieScreen = () => {
 
             {/* cast */}
             {
-                movie?.id && cast.length > 0 && <Cast navigation={navigation} cast={cast}/>
+                movieDetails?.id && cast.length > 0 && <Cast navigation={navigation} cast={cast}/>
             }
 
             {/* similar movies section */}
             {
-                movie?.id && similarMovies.length > 0 &&
+                movieDetails?.id && similarMovies.length > 0 &&
                 <MovieList title={'Similar Movies'} hideSeeAll={true} data={similarMovies}/>
             }
 
