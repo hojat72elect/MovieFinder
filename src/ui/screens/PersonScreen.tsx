@@ -10,7 +10,8 @@ import {fetchPersonMovies} from "../../api/repository/PersonMoviesDataSource";
 import {fetchPersonDetails} from "../../api/repository/PersonDetailsDataSource";
 import {FALLBACK_PERSON_IMAGE} from "../../api/Constants";
 import {getImage342} from "../../api/repository/TmdbImagesDataSource";
-
+import {ApiActorDetails} from "../../api/entities/ApiActorDetails";
+import {ApiMovie} from "../../api/entities/ApiMovie";
 
 const ios = Platform.OS === 'ios';
 const verticalMargin: number = ios ? 0 : 34;
@@ -21,21 +22,21 @@ export function PersonScreen() {
     const navigation = useNavigation();
 
     const [isFavourite, toggleFavourite] = useState(false);
-    const [person, setPerson] = useState<any | null>(null);
-    const [personMovies, setPersonMovies] = useState<any[]>([]);
+    const [person, setPerson] = useState<ApiActorDetails | null>(null);
+    const [personMovies, setPersonMovies] = useState<ApiMovie[]>([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
 
         // @ts-ignore
-        const personId = item.id
+        const personId: number = item.id;
         setLoading(true);
         getPersonDetails(personId);
         getPersonMovies(personId);
     }, [item]);
 
     const getPersonDetails = async (id: number) => {
-        const data = await fetchPersonDetails(id);
+        const data: ApiActorDetails = await fetchPersonDetails(id);
         setLoading(false);
         if (data) {
             setPerson(data);
