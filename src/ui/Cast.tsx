@@ -3,10 +3,12 @@ import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {NavigationProp} from "@react-navigation/core/src/types";
 import {FALLBACK_PERSON_IMAGE} from "../api/Constants";
 import {getImage185} from "../api/repository/TmdbImagesDataSource";
+import {ApiActor} from "../api/entities/ApiActor";
+
 
 
 type CastProps = {
-    cast: any[];
+    cast: ApiActor[];
     navigation: NavigationProp<ReactNavigation.RootParamList>;
 };
 
