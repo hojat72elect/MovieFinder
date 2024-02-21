@@ -1,7 +1,7 @@
 import {ApiSpokenLanguage} from "./ApiSpokenLanguage";
 import {ApiProductionCountry} from "./ApiProductionCountry";
 import {ApiProductionCompany} from "./ApiProductionCompany";
-import {ApiMovieDetailsGenres} from "./ApiMovieDetailsGenres";
+import {ApiMovieDetailsGenre} from "./ApiMovieDetailsGenre";
 
 /**
  * This is the API response we receive for a given movie when user clicks
@@ -12,7 +12,7 @@ export type ApiMovieDetails = {
     backdrop_path: string;
     belongs_to_collection?: any;
     budget: number;
-    genres: ApiMovieDetailsGenres[];
+    genres: ApiMovieDetailsGenre[];
     homepage: string;
     id: number;
     imdb_id: string;

@@ -1,7 +1,7 @@
 /**
  * Genres of a given movie.
  */
-export type ApiMovieDetailsGenres = {
+export type ApiMovieDetailsGenre = {
     id: number;
     name: string;
 }

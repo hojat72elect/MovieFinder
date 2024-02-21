@@ -16,8 +16,9 @@ import {FALLBACK_MOVIE_POSTER} from "../../api/Constants";
 import {fetchMovieDetails} from "../../api/repository/MovieDetailsDataSource";
 import {getImage500} from "../../api/repository/TmdbImagesDataSource";
 import {ApiMovieDetails} from "../../api/entities/ApiMovieDetails";
-import { ApiCast} from "../../api/entities/ApiCast";
+import {ApiCast} from "../../api/entities/ApiCast";
 import {ApiActor} from "../../api/entities/ApiActor";
+import {ApiMovie} from "../../api/entities/ApiMovie";
 
 const {width, height} = Dimensions.get('window');
 const isIos = Platform.OS === 'ios';
@@ -30,7 +31,7 @@ export const MovieScreen = () => {
 
     const [movieDetails, setMovieDetails] = useState<ApiMovieDetails | null>(null);
     const [cast, setCast] = useState<ApiActor[]>([]);
-    const [similarMovies, setSimilarMovies] = useState<any[]>([]);
+    const [similarMovies, setSimilarMovies] = useState<ApiMovie[]>([]);
     const [isFavourite, toggleFavourite] = useState(false);
     const [loading, setLoading] = useState(false);
 
