@@ -16,6 +16,7 @@ import {Loading} from "../Loading";
 import {searchMovies} from "../../api/repository/MovieSearchDataSource";
 import {FALLBACK_MOVIE_POSTER} from "../../api/Constants";
 import {getImage185} from "../../api/repository/TmdbImagesDataSource";
+import {ApiMovie} from "../../api/entities/ApiMovie";
 
 const {width, height} = Dimensions.get('window');
 
@@ -23,7 +24,7 @@ export default function SearchScreen() {
     const navigation = useNavigation();
 
     const [loading, setLoading] = useState(false);
-    const [results, setResults] = useState<any[]>([])
+    const [results, setResults] = useState<ApiMovie[]>([])
 
     const handleSearch = (search: string) => {
         if (search && search.length > 2) {
