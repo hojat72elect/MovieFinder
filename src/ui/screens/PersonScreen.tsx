@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {Dimensions, Image, Platform, SafeAreaView, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {ChevronLeftIcon} from "react-native-heroicons/outline";
-import {HeartIcon} from "react-native-heroicons/solid";
 import {styles} from "../Theme";
 import {MovieList} from "../MovieList";
 import {useNavigation, useRoute} from "@react-navigation/native";
@@ -21,7 +20,6 @@ export function PersonScreen() {
     const {params: item} = useRoute();
     const navigation = useNavigation();
 
-    const [isFavourite, toggleFavourite] = useState(false);
     const [person, setPerson] = useState<ApiActorDetails | null>(null);
     const [personMovies, setPersonMovies] = useState<ApiMovie[]>([]);
     const [loading, setLoading] = useState(false);
@@ -67,9 +65,7 @@ export function PersonScreen() {
                     <ChevronLeftIcon size={28} strokeWidth={2.5} color="white"/>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => toggleFavourite(!isFavourite)}>
-                    <HeartIcon size={35} color={isFavourite ? 'red' : 'white'}/>
-                </TouchableOpacity>
+
             </SafeAreaView>
 
             {
