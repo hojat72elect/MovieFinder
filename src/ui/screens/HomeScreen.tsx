@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import {Platform, SafeAreaView, ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {Platform, SafeAreaView, ScrollView, Text, View} from "react-native";
 import {StatusBar} from "expo-status-bar";
-import {Bars3CenterLeftIcon, MagnifyingGlassIcon} from "react-native-heroicons/outline";
 import {TrendingMovies} from "../TrendingMovies";
 import {MovieList} from "../MovieList";
 import {styles} from "../Theme";
@@ -56,20 +55,18 @@ export const HomeScreen = () => {
                 {/*Search bar and logo*/}
                 <View style={{
                     flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
+                    justifyContent: 'center',
                     marginHorizontal: 14,
                     marginVertical: 26
                 }}
                 >
-                    <Bars3CenterLeftIcon size={30} strokeWidth={2} color="white"/>
                     <Text style={{color: 'white', fontSize: 28, fontWeight: 'bold'}}>
                         <Text style={styles.text}>M</Text>ovies
                     </Text>
                     {/*@ts-ignore*/}
-                    <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-                        <MagnifyingGlassIcon size={30} strokeWidth={2} color="white"/>
-                    </TouchableOpacity>
+                    {/*<TouchableOpacity onPress={() => navigation.navigate('Search')}>*/}
+                    {/*    <MagnifyingGlassIcon size={30} strokeWidth={2} color="white"/>*/}
+                    {/*</TouchableOpacity>*/}
                 </View>
             </SafeAreaView>
             {/*List of movies*/}

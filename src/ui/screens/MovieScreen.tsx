@@ -3,12 +3,10 @@ import {Dimensions, Image, Platform, SafeAreaView, ScrollView, Text, TouchableOp
 import {useNavigation, useRoute} from "@react-navigation/native";
 import {ChevronLeftIcon} from "react-native-heroicons/outline";
 import {LinearGradient} from "expo-linear-gradient";
-import {HeartIcon} from "react-native-heroicons/solid";
 import {MovieList} from "../MovieList";
 import {Cast} from "../Cast";
 import {styles} from "../Theme";
 import {Loading} from "../Loading";
-import {AppTheme} from "../../AppTheme";
 import {NavigationProp} from "@react-navigation/core/src/types";
 import {fetchSimilarMovies} from "../../api/repository/SimilarMoviesDataSource";
 import {fetchMovieCredits} from "../../api/repository/MovieCreditsDataSource";
@@ -32,7 +30,7 @@ export const MovieScreen = () => {
     const [movieDetails, setMovieDetails] = useState<ApiMovieDetails | null>(null);
     const [cast, setCast] = useState<ApiActor[]>([]);
     const [similarMovies, setSimilarMovies] = useState<ApiMovie[]>([]);
-    const [isFavourite, toggleFavourite] = useState(false);
+
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -89,9 +87,6 @@ export const MovieScreen = () => {
                         <ChevronLeftIcon size="28" strokeWidth={2.5} color="white"/>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => toggleFavourite(!isFavourite)}>
-                        <HeartIcon size={35} color={isFavourite ? AppTheme.secondary : 'white'}/>
-                    </TouchableOpacity>
                 </SafeAreaView>
                 {
                     loading ? (

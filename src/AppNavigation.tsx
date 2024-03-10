@@ -10,16 +10,15 @@ import {AppTheme} from "./AppTheme";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {
     Cog6ToothIcon as SettingsOutline,
-    HeartIcon as HeartOutline,
-    HomeIcon as HomeOutline
+    HomeIcon as HomeOutline,
+    MagnifyingGlassIcon as SearchOutline,
 } from 'react-native-heroicons/outline';
 import {
     Cog6ToothIcon as SettingsSolid,
-    HeartIcon as HeartSolid,
-    HomeIcon as HomeSolid
+    HomeIcon as HomeSolid,
+    MagnifyingGlassIcon as SearchSolid
 } from 'react-native-heroicons/solid';
 import {Text, View} from "react-native";
-import {LikesScreen} from "./ui/screens/LikesScreen";
 import {SettingsScreen} from "./ui/screens/SettingsScreen";
 
 
@@ -37,9 +36,9 @@ const bottomBarIcons = (route: Route<any>, focused: boolean) => {
     if (route.name === Destination.Discover.route) {
         icon = focused ? <HomeSolid size={30} color={AppTheme.secondary}/> :
             <HomeOutline size={30} color={AppTheme.primary}/>
-    } else if (route.name === Destination.Likes.route) {
-        icon = focused ? <HeartSolid size={30} color={AppTheme.secondary}/> :
-            <HeartOutline size={30} color={AppTheme.primary}/>
+    } else if (route.name === Destination.Search.route) {
+        icon = focused ? <SearchSolid size={30} color={AppTheme.secondary}/> :
+            <SearchOutline size={30} color={AppTheme.primary}/>
     } else if (route.name === Destination.Settings.route) {
         icon = focused ? <SettingsSolid size={30} color={AppTheme.secondary}/> :
             <SettingsOutline size={30} color={AppTheme.primary}/>
@@ -67,10 +66,10 @@ function bottomBarLabels(route: Route<any>, focused: boolean) {
         label = focused ?
             <Text style={{color: AppTheme.secondary}}>{Destination.Discover.route}</Text> :
             <Text style={{color: AppTheme.primary}}>{Destination.Discover.route}</Text>
-    } else if (route.name === Destination.Likes.route) {
+    } else if (route.name === Destination.Search.route) {
         label = focused ?
-            <Text style={{color: AppTheme.secondary}}>{Destination.Likes.route}</Text> :
-            <Text style={{color: AppTheme.primary}}>{Destination.Likes.route}</Text>
+            <Text style={{color: AppTheme.secondary}}>{Destination.Search.route}</Text> :
+            <Text style={{color: AppTheme.primary}}>{Destination.Search.route}</Text>
     } else if (route.name === Destination.Settings.route) {
         label = focused ?
             <Text style={{color: AppTheme.secondary}}>{Destination.Settings.route}</Text> :
@@ -100,7 +99,7 @@ function BottomTabs() {
 
         >
             <Tab.Screen name={Destination.Discover.route} component={HomeScreen}/>
-            <Tab.Screen name={Destination.Likes.route} component={LikesScreen}/>
+            <Tab.Screen name={Destination.Search.route} component={SearchScreen}/>
             <Tab.Screen name={Destination.Settings.route} component={SettingsScreen}/>
         </Tab.Navigator>
     )
