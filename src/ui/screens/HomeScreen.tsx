@@ -4,7 +4,6 @@ import {StatusBar} from "expo-status-bar";
 import {TrendingMovies} from "../TrendingMovies";
 import {MovieList} from "../MovieList";
 import {styles} from "../Theme";
-import {useNavigation} from "@react-navigation/native";
 import {Loading} from "../Loading";
 import {ApiMovie} from "../../api/entities/ApiMovie";
 import {ApiResponse} from "../../api/entities/ApiResponse";
@@ -21,7 +20,6 @@ export const HomeScreen = () => {
     const [topRated, setTopRated] = useState<ApiMovie[]>([]);
     const [loading, setLoading] = useState(true);
 
-    const navigation = useNavigation();
 
     useEffect(() => {
         getTrendingMovies();
@@ -63,10 +61,6 @@ export const HomeScreen = () => {
                     <Text style={{color: 'white', fontSize: 28, fontWeight: 'bold'}}>
                         <Text style={styles.text}>M</Text>ovies
                     </Text>
-                    {/*@ts-ignore*/}
-                    {/*<TouchableOpacity onPress={() => navigation.navigate('Search')}>*/}
-                    {/*    <MagnifyingGlassIcon size={30} strokeWidth={2} color="white"/>*/}
-                    {/*</TouchableOpacity>*/}
                 </View>
             </SafeAreaView>
             {/*List of movies*/}
