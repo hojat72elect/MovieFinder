@@ -31,7 +31,13 @@ export const MovieList = ({title, data, hideSeeAll = false}: MovieListProps) => 
                 <Text style={{color: 'white', fontSize: 20}}>{title}</Text>
                 {
                     !hideSeeAll && (
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => {
+                                console.log('see all pressed');
+                                // @ts-ignore
+                                navigation.navigate('SeeAllMovies');
+                            }}
+                        >
                             <Text style={{color: styles.text.color, fontSize: 16}}>See All</Text>
                         </TouchableOpacity>
                     )
