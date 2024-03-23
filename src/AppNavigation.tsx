@@ -20,6 +20,7 @@ import {
 import {Text, View} from "react-native";
 import {SettingsScreen} from "./ui/screens/SettingsScreen";
 import {SearchScreen} from "./ui/screens/SearchScreen";
+import {SeeAllMoviesScreen} from "./ui/screens/SeeAllMoviesScreen";
 
 
 // The 2 navigators used for the navigation module of this app.
@@ -116,7 +117,7 @@ export function AppNavigation() {
                 <Stack.Screen name="Home" options={{headerShown: false}} component={BottomTabs}/>
                 <Stack.Screen name="Movie" options={{headerShown: false}} component={MovieScreen}/>
                 <Stack.Screen name="Person" options={{headerShown: false}} component={PersonScreen}/>
-                <Stack.Screen name="Search" options={{headerShown: false}} component={SearchScreen}/>
+                <Stack.Screen name="SeeAllMovies" options={{headerShown: false}} component={SeeAllMoviesScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

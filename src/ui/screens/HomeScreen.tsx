@@ -10,6 +10,7 @@ import {ApiResponse} from "../../api/entities/ApiResponse";
 import {fetchTrendingMovies} from "../../api/repository/TrendingMoviesDataSource";
 import {fetchRecentlyReleasedMovies} from "../../api/repository/RecentlyReleasedMoviesDataSource";
 import {fetchTopRatedMovies} from "../../api/repository/TopRatedMoviesDataSource";
+import {DomainMovieCategory} from "./DomainMovieCategory";
 
 const isIos = Platform.OS === 'ios';
 
@@ -75,10 +76,10 @@ export const HomeScreen = () => {
                     {trending.length > 0 && <TrendingMovies data={trending}/>}
 
                     {/*A row of recently released movies.*/}
-                    {recentlyReleased.length > 0 && <MovieList title="Recently Released" data={recentlyReleased}/>}
+                    {recentlyReleased.length > 0 && <MovieList title="Recently Released" data={recentlyReleased} category={DomainMovieCategory.RECENTLY_RELEASED}/>}
 
                     {/*A row of top-rated movies.*/}
-                    {topRated.length > 0 && <MovieList title="Top Rated" data={topRated}/>}
+                    {topRated.length > 0 && <MovieList title="Top Rated" data={topRated} category={DomainMovieCategory.TOP_RATED}/>}
                 </ScrollView>)}
         </View>
     )

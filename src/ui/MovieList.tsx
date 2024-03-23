@@ -5,6 +5,7 @@ import {styles} from "./Theme";
 import {FALLBACK_MOVIE_POSTER} from "../api/Constants";
 import {getImage185} from "../api/repository/TmdbImagesDataSource";
 import {ApiMovie} from "../api/entities/ApiMovie";
+import {DomainMovieCategory} from "./screens/DomainMovieCategory";
 
 const {width, height} = Dimensions.get('window');
 
@@ -12,9 +13,16 @@ type MovieListProps = {
     title: string;
     data: ApiMovie[];
     hideSeeAll?: boolean;
+    category?: DomainMovieCategory;
 };
 
-export const MovieList = ({title, data, hideSeeAll = false}: MovieListProps) => {
+export const MovieList = (
+    {
+        title,
+        data,
+        hideSeeAll = false,
+        category,
+    }: MovieListProps) => {
 
     const navigation = useNavigation();
 
@@ -31,7 +39,12 @@ export const MovieList = ({title, data, hideSeeAll = false}: MovieListProps) => 
                 <Text style={{color: 'white', fontSize: 20}}>{title}</Text>
                 {
                     !hideSeeAll && (
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => {
+                                // @ts-ignore
+                                navigation.push('SeeAllMovies', category);
+                            }}
+                        >
                             <Text style={{color: styles.text.color, fontSize: 16}}>See All</Text>
                         </TouchableOpacity>
                     )
