@@ -4,7 +4,6 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {HomeScreen} from "./ui/screens/HomeScreen";
 import {MovieScreen} from "./ui/screens/MovieScreen";
 import {PersonScreen} from "./ui/screens/PersonScreen";
-import SearchScreen from "./ui/screens/SearchScreen";
 import {Destination} from "./Destination";
 import {AppTheme} from "./AppTheme";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
@@ -20,6 +19,7 @@ import {
 } from 'react-native-heroicons/solid';
 import {Text, View} from "react-native";
 import {SettingsScreen} from "./ui/screens/SettingsScreen";
+import {SearchScreen} from "./ui/screens/SearchScreen";
 
 
 // The 2 navigators used for the navigation module of this app.

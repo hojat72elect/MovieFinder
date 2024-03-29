@@ -20,7 +20,7 @@ import {ApiMovie} from "../../api/entities/ApiMovie";
 
 const {width, height} = Dimensions.get('window');
 
-export default function SearchScreen() {
+export function SearchScreen() {
     const navigation = useNavigation();
 
     const [loading, setLoading] = useState(false);
