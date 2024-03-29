@@ -106,7 +106,8 @@ export default function SearchScreen() {
                                 style={{
                                     color: 'white',
                                     fontWeight: '600',
-                                    marginLeft: 2
+                                    marginLeft: 2,
+                                    marginTop: 15,
                                 }}
                             >Results ({results.length})</Text>
                             <View
