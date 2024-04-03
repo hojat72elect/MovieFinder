@@ -8,7 +8,7 @@ export class Destination {
     }
 
     // The destinations you can reach through the bottom tab bar:
-    public static Discover = new Destination("Discover");
+    public static Home = new Destination("Home");
     public static Search = new Destination("Search");
     public static Settings = new Destination("Settings");
 

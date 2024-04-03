@@ -34,7 +34,7 @@ const Tab = createBottomTabNavigator();
 const bottomBarIcons = (route: Route<any>, focused: boolean) => {
     let icon: ReactNode;
 
-    if (route.name === Destination.Discover.route) {
+    if (route.name === Destination.Home.route) {
         icon = focused ? <HomeSolid size={30} color={AppTheme.secondary}/> :
             <HomeOutline size={30} color={AppTheme.primary}/>
     } else if (route.name === Destination.Search.route) {
@@ -63,10 +63,10 @@ const bottomBarIcons = (route: Route<any>, focused: boolean) => {
 function bottomBarLabels(route: Route<any>, focused: boolean) {
     let label: ReactNode;
 
-    if (route.name === Destination.Discover.route) {
+    if (route.name === Destination.Home.route) {
         label = focused ?
-            <Text style={{color: AppTheme.secondary}}>{Destination.Discover.route}</Text> :
-            <Text style={{color: AppTheme.primary}}>{Destination.Discover.route}</Text>
+            <Text style={{color: AppTheme.secondary}}>{Destination.Home.route}</Text> :
+            <Text style={{color: AppTheme.primary}}>{Destination.Home.route}</Text>
     } else if (route.name === Destination.Search.route) {
         label = focused ?
             <Text style={{color: AppTheme.secondary}}>{Destination.Search.route}</Text> :
@@ -82,7 +82,7 @@ function bottomBarLabels(route: Route<any>, focused: boolean) {
 function BottomTabs() {
     return (
         <Tab.Navigator
-            initialRouteName={Destination.Discover.route}
+            initialRouteName={Destination.Home.route}
             screenOptions={({route}) => ({
                 tabBarShowLabel: true,
                 headerShown: false,
@@ -99,7 +99,7 @@ function BottomTabs() {
             })}
 
         >
-            <Tab.Screen name={Destination.Discover.route} component={HomeScreen}/>
+            <Tab.Screen name={Destination.Home.route} component={HomeScreen}/>
             <Tab.Screen name={Destination.Search.route} component={SearchScreen}/>
             <Tab.Screen name={Destination.Settings.route} component={SettingsScreen}/>
         </Tab.Navigator>
@@ -114,7 +114,7 @@ export function AppNavigation() {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="Home" options={{headerShown: false}} component={BottomTabs}/>
+                <Stack.Screen name="BottomTabs" options={{headerShown: false}} component={BottomTabs}/>
                 <Stack.Screen name="Movie" options={{headerShown: false}} component={MovieScreen}/>
                 <Stack.Screen name="Person" options={{headerShown: false}} component={PersonScreen}/>
                 <Stack.Screen name="SeeAllMovies" options={{headerShown: false}} component={SeeAllMoviesScreen}/>
