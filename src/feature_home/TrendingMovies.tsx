@@ -2,8 +2,10 @@ import React from 'react'
 import {Dimensions, Image, Text, TouchableWithoutFeedback, View} from "react-native";
 import Carousel from "react-native-snap-carousel";
 import {useNavigation} from "@react-navigation/native";
-import {getImage500} from "../api/repository/TmdbImagesDataSource";
-import {ApiMovie} from "../api/entities/ApiMovie";
+import {ApiMovie} from "../shared/data/entities/ApiMovie";
+import {getImage500} from "../shared/data/repository/TmdbImagesDataSource";
+
+
 
 
 const {width, height} = Dimensions.get('window');

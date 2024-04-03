@@ -1,13 +1,14 @@
 import {Dimensions, Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {useEffect, useState} from "react";
-import {ApiMovie} from "../../api/entities/ApiMovie";
-import {getImage185} from "../../api/repository/TmdbImagesDataSource";
-import {FALLBACK_MOVIE_POSTER} from "../../api/Constants";
-import {ApiResponse} from "../../api/entities/ApiResponse";
-import {fetchRecentlyReleasedMovies} from "../../api/repository/RecentlyReleasedMoviesDataSource";
 import {useNavigation, useRoute} from "@react-navigation/native";
-import {DomainMovieCategory} from "./DomainMovieCategory";
-import {fetchTopRatedMovies} from "../../api/repository/TopRatedMoviesDataSource";
+import {ApiMovie} from "../shared/data/entities/ApiMovie";
+import {ApiResponse} from "../shared/data/entities/ApiResponse";
+import {fetchRecentlyReleasedMovies} from "../shared/data/repository/RecentlyReleasedMoviesDataSource";
+import {fetchTopRatedMovies} from "../shared/data/repository/TopRatedMoviesDataSource";
+import {getImage185} from "../shared/data/repository/TmdbImagesDataSource";
+import {FALLBACK_MOVIE_POSTER} from "../shared/data/Constants";
+import {DomainMovieCategory} from "../shared/ui/DomainMovieCategory";
+
 
 const {width, height} = Dimensions.get('window');
 

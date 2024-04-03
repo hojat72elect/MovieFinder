@@ -1,11 +1,7 @@
 import React, {ReactNode} from 'react'
 import {NavigationContainer, Route} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import {HomeScreen} from "./ui/screens/HomeScreen";
-import {MovieScreen} from "./ui/screens/MovieScreen";
-import {PersonScreen} from "./ui/screens/PersonScreen";
 import {Destination} from "./Destination";
-import {AppTheme} from "./AppTheme";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {
     Cog6ToothIcon as SettingsOutline,
@@ -18,9 +14,13 @@ import {
     MagnifyingGlassIcon as SearchSolid
 } from 'react-native-heroicons/solid';
 import {Text, View} from "react-native";
-import {SettingsScreen} from "./ui/screens/SettingsScreen";
-import {SearchScreen} from "./ui/screens/SearchScreen";
-import {SeeAllMoviesScreen} from "./ui/screens/SeeAllMoviesScreen";
+import {HomeScreen} from "./feature_home/HomeScreen";
+import {SeeAllMoviesScreen} from "./feature_home/SeeAllMoviesScreen";
+import {SearchScreen} from "./feature_search/SearchScreen";
+import {SettingsScreen} from "./feature_settings/SettingsScreen";
+import {AppTheme} from "./shared/AppTheme";
+import {MovieScreen} from "./feature_movie/MovieScreen";
+import {PersonScreen} from "./feature_person/PersonScreen";
 
 
 // The 2 navigators used for the navigation module of this app.

@@ -1,9 +1,9 @@
 import React from 'react'
 import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {NavigationProp} from "@react-navigation/core/src/types";
-import {FALLBACK_PERSON_IMAGE} from "../api/Constants";
-import {getImage185} from "../api/repository/TmdbImagesDataSource";
-import {ApiActor} from "../api/entities/ApiActor";
+import {ApiActor} from "../data/entities/ApiActor";
+import {getImage185} from "../data/repository/TmdbImagesDataSource";
+import {FALLBACK_PERSON_IMAGE} from "../data/Constants";
 
 
 

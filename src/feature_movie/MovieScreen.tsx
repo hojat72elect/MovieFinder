@@ -3,20 +3,21 @@ import {Dimensions, Image, Platform, SafeAreaView, ScrollView, Text, TouchableOp
 import {useNavigation, useRoute} from "@react-navigation/native";
 import {ChevronLeftIcon} from "react-native-heroicons/outline";
 import {LinearGradient} from "expo-linear-gradient";
-import {MovieList} from "../MovieList";
-import {Cast} from "../Cast";
-import {styles} from "../Theme";
-import {Loading} from "../Loading";
 import {NavigationProp} from "@react-navigation/core/src/types";
-import {fetchSimilarMovies} from "../../api/repository/SimilarMoviesDataSource";
-import {fetchMovieCredits} from "../../api/repository/MovieCreditsDataSource";
-import {FALLBACK_MOVIE_POSTER} from "../../api/Constants";
-import {fetchMovieDetails} from "../../api/repository/MovieDetailsDataSource";
-import {getImage500} from "../../api/repository/TmdbImagesDataSource";
-import {ApiMovieDetails} from "../../api/entities/ApiMovieDetails";
-import {ApiCast} from "../../api/entities/ApiCast";
-import {ApiActor} from "../../api/entities/ApiActor";
-import {ApiMovie} from "../../api/entities/ApiMovie";
+import {ApiMovieDetails} from "../shared/data/entities/ApiMovieDetails";
+import {ApiActor} from "../shared/data/entities/ApiActor";
+import {ApiMovie} from "../shared/data/entities/ApiMovie";
+import {ApiCast} from "../shared/data/entities/ApiCast";
+import {styles} from "../shared/Theme";
+import {Loading} from "../shared/ui/Loading";
+import {getImage500} from "../shared/data/repository/TmdbImagesDataSource";
+import {FALLBACK_MOVIE_POSTER} from "../shared/data/Constants";
+import {Cast} from "../shared/ui/Cast";
+import {MovieList} from "../shared/ui/MovieList";
+import {fetchMovieDetails} from "./MovieDetailsDataSource";
+import {fetchMovieCredits} from "./MovieCreditsDataSource";
+import {fetchSimilarMovies} from "./SimilarMoviesDataSource";
+
 
 const {width, height} = Dimensions.get('window');
 const isIos = Platform.OS === 'ios';

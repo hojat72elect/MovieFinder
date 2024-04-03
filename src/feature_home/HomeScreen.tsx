@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from 'react'
 import {Platform, SafeAreaView, ScrollView, Text, View} from "react-native";
 import {StatusBar} from "expo-status-bar";
-import {TrendingMovies} from "../TrendingMovies";
-import {MovieList} from "../MovieList";
-import {styles} from "../Theme";
-import {Loading} from "../Loading";
-import {ApiMovie} from "../../api/entities/ApiMovie";
-import {ApiResponse} from "../../api/entities/ApiResponse";
-import {fetchTrendingMovies} from "../../api/repository/TrendingMoviesDataSource";
-import {fetchRecentlyReleasedMovies} from "../../api/repository/RecentlyReleasedMoviesDataSource";
-import {fetchTopRatedMovies} from "../../api/repository/TopRatedMoviesDataSource";
-import {DomainMovieCategory} from "./DomainMovieCategory";
+import {ApiMovie} from "../shared/data/entities/ApiMovie";
+import {fetchTrendingMovies} from "../shared/data/repository/TrendingMoviesDataSource";
+import {ApiResponse} from "../shared/data/entities/ApiResponse";
+import {fetchRecentlyReleasedMovies} from "../shared/data/repository/RecentlyReleasedMoviesDataSource";
+import {fetchTopRatedMovies} from "../shared/data/repository/TopRatedMoviesDataSource";
+import {Loading} from "../shared/ui/Loading";
+import {MovieList} from "../shared/ui/MovieList";
+import {TrendingMovies} from "./TrendingMovies";
+import {DomainMovieCategory} from "../shared/ui/DomainMovieCategory";
+import {styles} from "../shared/Theme";
+
 
 const isIos = Platform.OS === 'ios';
 

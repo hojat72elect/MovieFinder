@@ -1,7 +1,7 @@
 import {ApiMovie} from "./ApiMovie";
 
 /**
- * This is the response we get from server when we are in the "home" screen and
+ * This is the response we get from server when we are in the "feature_home" screen and
  * make an API call to TMDB server.
  */
 export type ApiResponse = {

@@ -1,11 +1,11 @@
 import React from 'react'
 import {Dimensions, Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {useNavigation} from "@react-navigation/native";
-import {styles} from "./Theme";
-import {FALLBACK_MOVIE_POSTER} from "../api/Constants";
-import {getImage185} from "../api/repository/TmdbImagesDataSource";
-import {ApiMovie} from "../api/entities/ApiMovie";
-import {DomainMovieCategory} from "./screens/DomainMovieCategory";
+import {ApiMovie} from "../data/entities/ApiMovie";
+import {getImage185} from "../data/repository/TmdbImagesDataSource";
+import {FALLBACK_MOVIE_POSTER} from "../data/Constants";
+import {DomainMovieCategory} from "./DomainMovieCategory";
+import {styles} from "../Theme";
 
 const {width, height} = Dimensions.get('window');
 

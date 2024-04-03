@@ -2,6 +2,8 @@ import {Dimensions, View} from "react-native";
 import * as Progress from 'react-native-progress';
 import {AppTheme} from "../AppTheme";
 
+
+
 const {width, height} = Dimensions.get('window');
 
 export const Loading = () => {

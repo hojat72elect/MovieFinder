@@ -1,16 +1,18 @@
 import React, {useEffect, useState} from 'react'
 import {Dimensions, Image, Platform, SafeAreaView, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {ChevronLeftIcon} from "react-native-heroicons/outline";
-import {styles} from "../Theme";
-import {MovieList} from "../MovieList";
 import {useNavigation, useRoute} from "@react-navigation/native";
-import {Loading} from "../Loading";
-import {fetchPersonMovies} from "../../api/repository/PersonMoviesDataSource";
-import {fetchPersonDetails} from "../../api/repository/PersonDetailsDataSource";
-import {FALLBACK_PERSON_IMAGE} from "../../api/Constants";
-import {getImage342} from "../../api/repository/TmdbImagesDataSource";
-import {ApiActorDetails} from "../../api/entities/ApiActorDetails";
-import {ApiMovie} from "../../api/entities/ApiMovie";
+import {ApiActorDetails} from "../shared/data/entities/ApiActorDetails";
+import {ApiMovie} from "../shared/data/entities/ApiMovie";
+import {styles} from "../shared/Theme";
+import {Loading} from "../shared/ui/Loading";
+import {getImage342} from "../shared/data/repository/TmdbImagesDataSource";
+import {FALLBACK_PERSON_IMAGE} from "../shared/data/Constants";
+import {MovieList} from "../shared/ui/MovieList";
+import {fetchPersonDetails} from "./PersonDetailsDataSource";
+import {fetchPersonMovies} from "./PersonMoviesDataSource";
+
+
 
 const ios = Platform.OS === 'ios';
 const verticalMargin: number = ios ? 0 : 34;

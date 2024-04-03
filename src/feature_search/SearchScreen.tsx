@@ -12,11 +12,12 @@ import {useNavigation} from "@react-navigation/native";
 import {useCallback, useState} from "react";
 import {debounce} from 'lodash';
 import {XMarkIcon} from "react-native-heroicons/mini";
-import {Loading} from "../Loading";
-import {searchMovies} from "../../api/repository/MovieSearchDataSource";
-import {FALLBACK_MOVIE_POSTER} from "../../api/Constants";
-import {getImage185} from "../../api/repository/TmdbImagesDataSource";
-import {ApiMovie} from "../../api/entities/ApiMovie";
+import {searchMovies} from "./MovieSearchDataSource";
+import {ApiMovie} from "../shared/data/entities/ApiMovie";
+import {getImage185} from "../shared/data/repository/TmdbImagesDataSource";
+import {FALLBACK_MOVIE_POSTER} from "../shared/data/Constants";
+import {Loading} from "../shared/ui/Loading";
+
 
 const {width, height} = Dimensions.get('window');
 
@@ -54,7 +55,7 @@ export function SearchScreen() {
             }}
         >
 
-            {/* search input */}
+            {/* feature_search input */}
             <View
                 style={{
                     marginHorizontal: 18,
@@ -92,7 +93,7 @@ export function SearchScreen() {
                 </TouchableOpacity>
             </View>
 
-            {/* search results */}
+            {/* feature_search results */}
             {
                 loading ? (
                         <Loading/>
@@ -157,7 +158,7 @@ export function SearchScreen() {
                     ) : (
 
                         <Image
-                            source={require('../../../assets/images/movieTime.png')}
+                            source={require('../../assets/images/movieTime.png')}
                             style={{
                                 height: 400,
                                 width: 400,
