@@ -1,6 +1,7 @@
 import {Text, View} from "react-native";
 import {SettingsSectionItem} from "./SettingsSectionItem";
 import {AppTheme} from "../shared/AppTheme";
+import {BuildInfoDataSource} from "./BuildInfoDataSource";
 
 
 export const SettingsScreen = () => {
@@ -44,7 +45,7 @@ export const SettingsScreen = () => {
                     paddingTop: 8,
                 }}>About</Text>
                 <SettingsSectionItem title="Source Code" description="View MovieFinder's source code"/>
-                <SettingsSectionItem title="Version" description="v1.3.0 release"/>
+                <SettingsSectionItem title="Version" description={`${BuildInfoDataSource.versionNumber} - ${BuildInfoDataSource.environment}`}/>
                 <SettingsSectionItem title="Privacy Policy" description="View MovieFinder's privacy policies"/>
 
             </View>
