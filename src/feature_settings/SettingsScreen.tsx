@@ -3,6 +3,7 @@ import {SettingsSectionItem} from "./SettingsSectionItem";
 import {AppTheme} from "../shared/AppTheme";
 import {BuildInfoDataSource} from "./BuildInfoDataSource";
 import {useState} from "react";
+import {RadioButton} from "react-native-paper";
 
 export const SettingsScreen = () => {
 
@@ -11,6 +12,8 @@ export const SettingsScreen = () => {
 
     // Whether to show the language dialog or not.
     const [isLanguageDialogVisible, setIsLanguageDialogVisible] = useState(false);
+
+    const [currentlyChosenTheme, setCurrentlyChosenTheme] = useState('LIGHT');
 
     return (
         <View style={{
@@ -76,7 +79,7 @@ export const SettingsScreen = () => {
 
                 <SettingsSectionItem title="Version"
                                      description={`${BuildInfoDataSource.versionNumber} - ${BuildInfoDataSource.environment}`}/>
-                <TouchableOpacity onPress={()=>{
+                <TouchableOpacity onPress={() => {
                     Linking.openURL("https://www.freeprivacypolicy.com/live/bbea1d85-ba57-4697-8804-5874d10dcf9b");
                 }}>
                     <SettingsSectionItem title="Privacy Policy" description="View MovieFinder's privacy policies"/>
@@ -106,13 +109,18 @@ export const SettingsScreen = () => {
                             fontSize: 24,
                             color: "#000"
                         }}>Change Theme</Text>
-                        <Text style={{
+                        <View style={{
                             marginLeft: 24,
                             marginRight: 24,
-                            marginBottom: 24,
-                            fontSize: 16,
-                            color: "#000"
-                        }}>Here you should be able to select your desired theme from a group of radio buttons.</Text>
+                        }}>
+                            <RadioButton.Group onValueChange={(newValue) => {
+                                setCurrentlyChosenTheme(newValue);
+                            }} value={currentlyChosenTheme}>
+                                <RadioButton.Item label="Light" value="LIGHT"/>
+                                <RadioButton.Item label="Dark" value="DARK"/>
+                                <RadioButton.Item label="System" value="SYSTEM"/>
+                            </RadioButton.Group>
+                        </View>
                         <View style={{
                             marginTop: 0,
                             marginRight: 0,
