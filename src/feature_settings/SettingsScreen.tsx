@@ -14,6 +14,7 @@ export const SettingsScreen = () => {
     const [isLanguageDialogVisible, setIsLanguageDialogVisible] = useState(false);
 
     const [currentlyChosenTheme, setCurrentlyChosenTheme] = useState('LIGHT');
+    const [currentlyChosenLanguage, setCurrentlyChosenLanguage] = useState('ENG');
 
     return (
         <View style={{
@@ -164,13 +165,17 @@ export const SettingsScreen = () => {
                             fontSize: 24,
                             color: "#000"
                         }}>Change Language</Text>
-                        <Text style={{
+                        <View style={{
                             marginLeft: 24,
                             marginRight: 24,
-                            marginBottom: 24,
-                            fontSize: 16,
-                            color: "#000"
-                        }}>Here you should be able to select a language from a group of radio buttons.</Text>
+                        }}>
+                            <RadioButton.Group onValueChange={(newValue) => {
+                                setCurrentlyChosenLanguage(newValue);
+                            }} value={currentlyChosenLanguage}>
+                                <RadioButton.Item label="English" value="ENG"/>
+                                <RadioButton.Item label="Persian" value="FA"/>
+                            </RadioButton.Group>
+                        </View>
                         <View style={{
                             marginTop: 0,
                             marginRight: 0,
