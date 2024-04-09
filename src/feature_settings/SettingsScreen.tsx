@@ -1,4 +1,4 @@
-import {Button, Modal, Text, TouchableOpacity, View} from "react-native";
+import {Button, Linking, Modal, Text, TouchableOpacity, View} from "react-native";
 import {SettingsSectionItem} from "./SettingsSectionItem";
 import {AppTheme} from "../shared/AppTheme";
 import {BuildInfoDataSource} from "./BuildInfoDataSource";
@@ -68,7 +68,13 @@ export const SettingsScreen = () => {
                     letterSpacing: 0.6,
                     paddingTop: 8,
                 }}>About</Text>
-                <SettingsSectionItem title="Source Code" description="View MovieFinder's source code"/>
+                <TouchableOpacity onPress={() => {
+                    console.log("User wants to go to source code");
+                    Linking.openURL("https://github.com/hojat72elect/MovieFinder");
+                }}>
+                    <SettingsSectionItem title="Source Code" description="View MovieFinder's source code"/>
+                </TouchableOpacity>
+
                 <SettingsSectionItem title="Version"
                                      description={`${BuildInfoDataSource.versionNumber} - ${BuildInfoDataSource.environment}`}/>
                 <SettingsSectionItem title="Privacy Policy" description="View MovieFinder's privacy policies"/>
