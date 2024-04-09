@@ -69,7 +69,6 @@ export const SettingsScreen = () => {
                     paddingTop: 8,
                 }}>About</Text>
                 <TouchableOpacity onPress={() => {
-                    console.log("User wants to go to source code");
                     Linking.openURL("https://github.com/hojat72elect/MovieFinder");
                 }}>
                     <SettingsSectionItem title="Source Code" description="View MovieFinder's source code"/>
@@ -77,7 +76,12 @@ export const SettingsScreen = () => {
 
                 <SettingsSectionItem title="Version"
                                      description={`${BuildInfoDataSource.versionNumber} - ${BuildInfoDataSource.environment}`}/>
-                <SettingsSectionItem title="Privacy Policy" description="View MovieFinder's privacy policies"/>
+                <TouchableOpacity onPress={()=>{
+                    Linking.openURL("https://www.freeprivacypolicy.com/live/bbea1d85-ba57-4697-8804-5874d10dcf9b");
+                }}>
+                    <SettingsSectionItem title="Privacy Policy" description="View MovieFinder's privacy policies"/>
+                </TouchableOpacity>
+
 
             </View>
 
