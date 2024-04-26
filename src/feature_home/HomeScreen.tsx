@@ -10,7 +10,7 @@ import {Loading} from "../shared/ui/Loading";
 import {MovieList} from "../shared/ui/MovieList";
 import {TrendingMovies} from "./TrendingMovies";
 import {DomainMovieCategory} from "../shared/ui/DomainMovieCategory";
-import {styles} from "../shared/Theme";
+import {useTranslation} from "react-i18next";
 
 
 const isIos = Platform.OS === 'ios';
@@ -28,6 +28,7 @@ export const HomeScreen = () => {
         getRecentlyReleasedMovies();
         getTopRatedMovies();
     }, []);
+    const {t} = useTranslation();
 
     const getTrendingMovies = async () => {
         const data: ApiResponse = await fetchTrendingMovies();
@@ -42,7 +43,6 @@ export const HomeScreen = () => {
     }
     const getTopRatedMovies = async () => {
         const data: ApiResponse = await fetchTopRatedMovies();
-        console.log('got top rated', data.results.length)
         if (data && data.results) setTopRated(data.results);
     }
 
@@ -61,7 +61,7 @@ export const HomeScreen = () => {
                 }}
                 >
                     <Text style={{color: 'white', fontSize: 28, fontWeight: 'bold'}}>
-                        <Text style={styles.text}>M</Text>ovies
+                        {t("app_name")}
                     </Text>
                 </View>
             </SafeAreaView>
@@ -77,10 +77,16 @@ export const HomeScreen = () => {
                     {trending.length > 0 && <TrendingMovies data={trending}/>}
 
                     {/*A row of recently released movies.*/}
-                    {recentlyReleased.length > 0 && <MovieList title="Recently Released" data={recentlyReleased} category={DomainMovieCategory.RECENTLY_RELEASED}/>}
+                    {recentlyReleased.length > 0 &&
+                        <MovieList
+                            title={t("recently_released")}
+                            data={recentlyReleased}
+                            category={DomainMovieCategory.RECENTLY_RELEASED}
+                        />}
 
                     {/*A row of top-rated movies.*/}
-                    {topRated.length > 0 && <MovieList title="Top Rated" data={topRated} category={DomainMovieCategory.TOP_RATED}/>}
+                    {topRated.length > 0 &&
+                        <MovieList title={t("top_rated")} data={topRated} category={DomainMovieCategory.TOP_RATED}/>}
                 </ScrollView>)}
         </View>
     )

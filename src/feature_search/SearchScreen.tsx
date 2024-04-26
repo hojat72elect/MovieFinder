@@ -1,13 +1,4 @@
-import {
-    Dimensions,
-    SafeAreaView,
-    ScrollView,
-    TextInput,
-    TouchableOpacity,
-    View,
-    Image,
-    Text,
-} from "react-native";
+import {Dimensions, Image, SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View,} from "react-native";
 import {useNavigation} from "@react-navigation/native";
 import {useCallback, useState} from "react";
 import {debounce} from 'lodash';
@@ -17,7 +8,7 @@ import {ApiMovie} from "../shared/data/entities/ApiMovie";
 import {getImage185} from "../shared/data/repository/TmdbImagesDataSource";
 import {FALLBACK_MOVIE_POSTER} from "../shared/data/Constants";
 import {Loading} from "../shared/ui/Loading";
-
+import {useTranslation} from "react-i18next";
 
 const {width, height} = Dimensions.get('window');
 
@@ -46,6 +37,7 @@ export function SearchScreen() {
     }
 
     const handleTextDebounce = useCallback(debounce(handleSearch, 400), []);
+    const {t} = useTranslation();
 
     return (
         <SafeAreaView
@@ -69,7 +61,7 @@ export function SearchScreen() {
             >
                 <TextInput
                     onChangeText={handleTextDebounce}
-                    placeholder="Search Movies"
+                    placeholder={t("search_placeholder")}
                     placeholderTextColor={'lightgray'}
                     style={{
                         paddingLeft: 19,

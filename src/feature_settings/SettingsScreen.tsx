@@ -4,6 +4,7 @@ import {AppTheme} from "../shared/AppTheme";
 import {BuildInfoDataSource} from "./BuildInfoDataSource";
 import {useState} from "react";
 import {RadioButton} from "react-native-paper";
+import {useTranslation} from "react-i18next";
 
 export const SettingsScreen = () => {
 
@@ -15,6 +16,7 @@ export const SettingsScreen = () => {
 
     const [currentlyChosenTheme, setCurrentlyChosenTheme] = useState('LIGHT');
     const [currentlyChosenLanguage, setCurrentlyChosenLanguage] = useState('ENG');
+    const {t} = useTranslation();
 
     return (
         <View style={{
@@ -39,19 +41,17 @@ export const SettingsScreen = () => {
                 }}>General</Text>
 
                 <TouchableOpacity onPress={() => {
-                    console.log("User wants to see theme dialog");
                     // toggle theme dialog's visibility
                     setIsThemeDialogVisible(!isThemeDialogVisible);
                 }}>
-                    <SettingsSectionItem title="Theme" description="Light"/>
+                    <SettingsSectionItem title={t("settings_section_theme")} description={t("theme_light")}/>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => {
-                    console.log("User wants to see language dialog");
                     // toggle language dialog's visibility
                     setIsLanguageDialogVisible(!isLanguageDialogVisible);
                 }}>
-                    <SettingsSectionItem title="Language" description="English"/>
+                    <SettingsSectionItem title={t("settings_section_language")} description={t("language_english")}/>
                 </TouchableOpacity>
 
             </View>
@@ -78,7 +78,7 @@ export const SettingsScreen = () => {
                     <SettingsSectionItem title="Source Code" description="View MovieFinder's source code"/>
                 </TouchableOpacity>
 
-                <SettingsSectionItem title="Version"
+                <SettingsSectionItem title={t("settings_section_version")}
                                      description={`${BuildInfoDataSource.versionNumber} - ${BuildInfoDataSource.environment}`}/>
                 <TouchableOpacity onPress={() => {
                     Linking.openURL("https://www.freeprivacypolicy.com/live/bbea1d85-ba57-4697-8804-5874d10dcf9b");
