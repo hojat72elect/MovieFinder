@@ -1,0 +1,4 @@
+.idea
+/src/shared/data/Constants.ts
+node_modules
+package-lock.json
