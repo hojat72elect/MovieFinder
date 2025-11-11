@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {Platform, SafeAreaView, ScrollView, Text, View} from "react-native";
+import {SafeAreaView, ScrollView, Text, View} from "react-native";
 import {StatusBar} from "expo-status-bar";
 import {ApiMovie} from "../shared/data/entities/ApiMovie";
 import {fetchTrendingMovies} from "../shared/data/repository/TrendingMoviesDataSource";
@@ -11,9 +11,6 @@ import {MovieList} from "../shared/ui/MovieList";
 import {TrendingMovies} from "./TrendingMovies";
 import {DomainMovieCategory} from "../shared/ui/DomainMovieCategory";
 import {useTranslation} from "react-i18next";
-
-
-const isIos = Platform.OS === 'ios';
 
 export const HomeScreen = () => {
 
@@ -46,11 +43,9 @@ export const HomeScreen = () => {
         if (data && data.results) setTopRated(data.results);
     }
 
-    const safeAreaViewMarginBottom: number = isIos ? -2 : 3
-
     return (
         <View style={{flex: 1, backgroundColor: 'gray'}}>
-            <SafeAreaView style={{marginBottom: safeAreaViewMarginBottom}}>
+            <SafeAreaView style={{marginBottom: 3}}>
                 <StatusBar style="light"/>
                 {/*Search bar and logo*/}
                 <View style={{

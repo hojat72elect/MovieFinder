@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {Dimensions, Image, Platform, SafeAreaView, ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {Dimensions, Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {useNavigation, useRoute} from "@react-navigation/native";
 import {ChevronLeftIcon} from "react-native-heroicons/outline";
 import {LinearGradient} from "expo-linear-gradient";
@@ -18,20 +18,15 @@ import {fetchMovieDetails} from "./MovieDetailsDataSource";
 import {fetchMovieCredits} from "./MovieCreditsDataSource";
 import {fetchSimilarMovies} from "./SimilarMoviesDataSource";
 
-
 const {width, height} = Dimensions.get('window');
-const isIos = Platform.OS === 'ios';
-const topMargin: number = isIos ? 0 : 26;
 
 export const MovieScreen = () => {
 
     const {params: item} = useRoute();
     const navigation: NavigationProp<ReactNavigation.RootParamList> = useNavigation();
-
     const [movieDetails, setMovieDetails] = useState<ApiMovieDetails | null>(null);
     const [cast, setCast] = useState<ApiActor[]>([]);
     const [similarMovies, setSimilarMovies] = useState<ApiMovie[]>([]);
-
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -76,7 +71,7 @@ export const MovieScreen = () => {
                         justifyContent: 'space-between',
                         alignItems: 'center',
                         paddingHorizontal: 14,
-                        marginTop: topMargin,
+                        marginTop: 26,
                         zIndex: 20,
                         position: 'absolute',
                         width: '100%',
@@ -190,4 +185,3 @@ export const MovieScreen = () => {
         </ScrollView>
     )
 }
-
