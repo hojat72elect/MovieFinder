@@ -84,7 +84,6 @@ function BottomTabs() {
         <Tab.Navigator
             initialRouteName={Destination.Home.route}
             screenOptions={({route}) => ({
-                tabBarShowLabel: true,
                 headerShown: false,
                 headerStyle: {
                     backgroundColor: AppTheme.neutral,
