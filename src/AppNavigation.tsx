@@ -83,24 +83,35 @@ function BottomTabs() {
     return (
         <Tab.Navigator
             initialRouteName={Destination.Home.route}
-            screenOptions={({route}) => ({
-                headerShown: false,
-                headerStyle: {
-                    backgroundColor: AppTheme.neutral,
-                },
-                tabBarIcon: ({focused}) => bottomBarIcons(route, focused),
-                tabBarLabel: ({focused}) => bottomBarLabels(route, focused),
-                tabBarStyle: {
-                    height: 60,
-                    paddingBottom: 8,
-                    paddingTop: 5,
-                },
-            })}
+            screenOptions={({route}) => {
+                const options: any = {
+                    headerShown: false,
+                    tabBarIcon: ({focused}: {focused: boolean}) => bottomBarIcons(route, focused),
+                    tabBarLabel: route.name,
+                    tabBarActiveTintColor: AppTheme.secondary,
+                    tabBarInactiveTintColor: AppTheme.primary,
+                    tabBarStyle: {
+                        height: 60,
+                        paddingBottom: 8,
+                        paddingTop: 5,
+                    },
+                };
+                return options;
+            }}
 
         >
-            <Tab.Screen name={Destination.Home.route} component={HomeScreen}/>
-            <Tab.Screen name={Destination.Search.route} component={SearchScreen}/>
-            <Tab.Screen name={Destination.Settings.route} component={SettingsScreen}/>
+            <Tab.Screen
+                name={Destination.Home.route}
+                component={HomeScreen}
+            />
+            <Tab.Screen
+                name={Destination.Search.route}
+                component={SearchScreen}
+            />
+            <Tab.Screen
+                name={Destination.Settings.route}
+                component={SettingsScreen}
+            />
         </Tab.Navigator>
     )
 }
@@ -112,11 +123,22 @@ export function AppNavigation() {
 
     return (
         <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name="BottomTabs" options={{headerShown: false}} component={BottomTabs}/>
-                <Stack.Screen name="Movie" options={{headerShown: false}} component={MovieScreen}/>
-                <Stack.Screen name="Person" options={{headerShown: false}} component={PersonScreen}/>
-                <Stack.Screen name="SeeAllMovies" options={{headerShown: false}} component={SeeAllMoviesScreen}/>
+            <Stack.Navigator
+                screenOptions={{
+                    headerShown: false,
+                }}
+            >
+                <Stack.Screen
+                    name="BottomTabs"
+                    component={BottomTabs}
+                    options={{
+                        headerShown: false,
+                        presentation: 'card',
+                    }}
+                />
+                <Stack.Screen name="Movie" component={MovieScreen}/>
+                <Stack.Screen name="Person" component={PersonScreen}/>
+                <Stack.Screen name="SeeAllMovies" component={SeeAllMoviesScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

@@ -2,6 +2,12 @@ import {LogBox} from "react-native";
 import {AppNavigation} from "./src/AppNavigation";
 import {I18nextProvider} from "react-i18next";
 import i18n from "./i18n";
+import {enableScreens} from 'react-native-screens';
+
+// Enable React Native Screens for better performance
+if (enableScreens) {
+    enableScreens();
+}
 
 export default function App() {
 
