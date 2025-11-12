@@ -133,7 +133,6 @@ export function AppNavigation() {
                     component={BottomTabs}
                     options={{
                         headerShown: false,
-                        presentation: 'card',
                     }}
                 />
                 <Stack.Screen name="Movie" component={MovieScreen}/>

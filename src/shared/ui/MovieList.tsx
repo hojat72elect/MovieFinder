@@ -52,7 +52,7 @@ export const MovieList = (
             </View>
             {/*A scrollable row of movies.*/}
             <ScrollView
-                horizontal
+                horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 style={{paddingHorizontal: 12}}
             >

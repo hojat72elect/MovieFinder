@@ -24,7 +24,7 @@ export const Cast = ({cast, navigation}: CastProps) => {
                     marginHorizontal: 8
                 }}>Top Cast</Text>
             <ScrollView
-                horizontal
+                horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 style={{paddingHorizontal: 15, marginTop: 10}}
             >
