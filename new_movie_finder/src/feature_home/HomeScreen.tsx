@@ -47,7 +47,7 @@ export const HomeScreen = () => {
 
     return (
         <IonPage>
-            <IonContent fullscreen>
+            <IonContent fullscreen style={{'--background': '#808080'}}>
                 <div className="py-2">
                     <h1 className="px-4 pb-2 font-bold text-xl">Trending</h1>
                     <Swiper
