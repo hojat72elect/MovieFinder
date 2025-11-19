@@ -22,7 +22,7 @@ export const MovieList = ({movies, title, className}: {
                             alt={movie.title}
                             className="object-cover rounded-2xl h-80"
                         />
-                        <h2 className="text-center bottom-4 left-4 text-blue-900 font-bold text-lg drop-shadow-lg">
+                        <h2 className="text-center bottom-4 left-4 text-[#d3d3d3] font-bold text-lg drop-shadow-lg">
                             {movie.title.length > 15 ? movie.title.substring(0, 15) + "..." : movie.title}
                         </h2>
                     </SwiperSlide>

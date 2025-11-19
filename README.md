@@ -63,5 +63,3 @@ Main developer: [Hojat Ghasemi](mailto:hojat72elect@gmail.com)
 <br/>
 
 ## Migration Roadmap
-
-1 - Change the font and its color for the movies in HomeScreen.
