@@ -65,5 +65,3 @@ Main developer: [Hojat Ghasemi](mailto:hojat72elect@gmail.com)
 ## Migration Roadmap
 
 1 - Change the font and its color for the movies in HomeScreen.
-
-2- Define the same component for "recently released" and "top rated" movies. 

@@ -7,7 +7,7 @@ import {fetchRecentlyReleasedMovies} from "../shared/data/repository/RecentlyRel
 import {fetchTopRatedMovies} from "../shared/data/repository/TopRatedMoviesDataSource";
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {EffectCards} from 'swiper/modules';
-import {MovieList} from '../shared/ui/MovieList';
+import {MovieList} from './MovieList';
 
 import 'swiper/css';
 import 'swiper/css/autoplay';

@@ -1,5 +1,5 @@
 import {Swiper, SwiperSlide} from "swiper/react";
-import {ApiMovie} from "../data/entities/ApiMovie";
+import {ApiMovie} from "../shared/data/entities/ApiMovie";
 
 export const MovieList = ({movies, title, className}: {
     movies: ApiMovie[],
