@@ -63,3 +63,5 @@ Main developer: [Hojat Ghasemi](mailto:hojat72elect@gmail.com)
 <br/>
 
 ## Migration Roadmap
+
+Implement the "SettingsScreen" UI in Tab 3 of the new app.
