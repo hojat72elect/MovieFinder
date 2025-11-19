@@ -7,7 +7,7 @@ import {fetchRecentlyReleasedMovies} from "../shared/data/repository/RecentlyRel
 import {fetchTopRatedMovies} from "../shared/data/repository/TopRatedMoviesDataSource";
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {EffectCards} from 'swiper/modules';
-import { MovieList } from '../shared/ui/MovieList';
+import {MovieList} from '../shared/ui/MovieList';
 
 import 'swiper/css';
 import 'swiper/css/autoplay';
@@ -68,14 +68,11 @@ export const HomeScreen = () => {
                 </div>
 
                 {/*Recently released movies*/}
-                <div className="pt-2 ps-2">
-                    <MovieList movies={recentlyReleased} title={"Recently Released"}/>
-                </div>
+                <MovieList movies={recentlyReleased} title="Recently Released" className="pt-2 ps-2"/>
 
                 {/*Top rated movies*/}
-                <div className="ps-2">
-                    <MovieList movies={topRated} title={"Top Rated"}/>
-                </div>
+                <MovieList movies={topRated} title={"Top Rated"} className="ps-2"/>
+
             </IonContent>
         </IonPage>
     );
