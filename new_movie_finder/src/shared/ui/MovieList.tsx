@@ -1,12 +1,7 @@
 import {Swiper, SwiperSlide} from "swiper/react";
 import {ApiMovie} from "../data/entities/ApiMovie";
 
-interface MovieListProps {
-    movies: ApiMovie[];
-    title: string
-}
-
-export const MovieList: React.FC<MovieListProps> = ({movies, title}) => {
+export const MovieList = ({movies, title}: {movies: ApiMovie[], title: string}) => {
     return (
         <div>
             <h1 className="px-4 pb-2 font-bold text-xl">{title}</h1>
